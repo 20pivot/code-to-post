@@ -1,3 +1,8 @@
+body {
+    width: fit-content;
+    font-family: Georgia;
+}
+
 #image {
     padding: 50px;
     width: 500px;
@@ -30,4 +35,18 @@ label {
     height: 36px;
     line-height: 36px;
     width: 300px;
+}
+
+#export-button {
+    float: right;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #198754;
+    background-color: #198754;
+    color: #fff;
+    cursor: pointer;
+}
+#export-button:hover {
+    background-color: #157347;
+    border-color: #146c43;
 }

@@ -1,13 +1,17 @@
 const DEFAULT = {
   backgroundInput: '#8A2BE2FF',
   backgroundCodeInput: '#282a36',
+  autoExportCheck: true,
 }
 const SESSION = 'session'
+const SESSION_DEFAULT = 'default'
 
 const image = document.getElementById('image')
 const frame = document.getElementById('frame')
 const backgroundInput = document.getElementById('background-input')
 const backgroundCodeInput = document.getElementById('background-code-input')
+const autoExportCheck = document.getElementById('auto-export-check')
+const exportButton = document.getElementById('export-button')
 
 
 let config
@@ -16,6 +20,8 @@ initialize()
 
 backgroundInput.addEventListener('change', setConfig);
 backgroundCodeInput.addEventListener('change', setConfig);
+autoExportCheck.addEventListener('change', setConfig);
+exportButton.addEventListener('click', exportAsJpg);
 document.addEventListener('paste', onPaste);
 
 function initialize() {
@@ -23,12 +29,12 @@ function initialize() {
   if (session) {
     config = getConfig(session)
   } else {
-    session = 'default'
+    session = SESSION_DEFAULT
     setCookie(SESSION, session)
     config = DEFAULT
   }
 
-  setConfig()
+  setConfig(true)
 }
 
 function saveConfig(session) {
@@ -39,12 +45,16 @@ function getConfig(session) {
   return JSON.parse(getCookie(session))
 }
 
-function setConfig() {
-  backgroundInput.value = backgroundInput.value || config.backgroundInput
-  backgroundCodeInput.value = backgroundCodeInput.value || config.backgroundCodeInput
+function setConfig(isInitialize) {
+  if(isInitialize === true) {
+    backgroundInput.value = config.backgroundInput
+    backgroundCodeInput.value = config.backgroundCodeInput
+    autoExportCheck.checked = config.autoExportCheck
+  }
 
   config.backgroundInput = backgroundInput.value
   config.backgroundCodeInput = backgroundCodeInput.value
+  config.autoExportCheck = autoExportCheck.checked
 
   image.style.backgroundColor = config.backgroundInput
   frame.style.backgroundColor = config.backgroundCodeInput
@@ -67,7 +77,9 @@ function onPaste(event) {
   const imageUrl = window.URL.createObjectURL(blob);
   document.getElementById('code').src = imageUrl;
 
-  setTimeout(() => exportAsJpg(), 500)
+  if(config.autoExportCheck) {
+    setTimeout(() => exportAsJpg(), 500)
+  }
 }
 
 function exportAsJpg() {
