@@ -3,6 +3,13 @@ body {
     font-family: Georgia;
 }
 
+#sessions {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+
+
 #image {
     padding: 50px;
     width: 500px;
@@ -28,6 +35,7 @@ input {
     border-radius: 5px;
     border: 1px solid black;
     float: left;
+    margin-right: 20px;
 }
 
 label {
@@ -35,6 +43,15 @@ label {
     height: 36px;
     line-height: 36px;
     width: 300px;
+}
+
+select {
+    width: 130px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    float: left;
+    margin-right: 20px;
 }
 
 #export-button {
@@ -49,4 +66,18 @@ label {
 #export-button:hover {
     background-color: #157347;
     border-color: #146c43;
+}
+
+#add-session {
+    float: right;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #198787;
+    background-color: #198787;
+    color: #fff;
+    cursor: pointer;
+}
+#add-session:hover {
+    background-color: #1c7a7a;
+    border-color: #217575;
 }
