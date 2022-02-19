@@ -1,28 +1,55 @@
+const DEFAULT = {
+  backgroundInput: '#8A2BE2FF',
+  backgroundCodeInput: '#282a36',
+}
+const SESSION = 'session'
+
 const image = document.getElementById('image')
 const frame = document.getElementById('frame')
 const backgroundInput = document.getElementById('background-input')
 const backgroundCodeInput = document.getElementById('background-code-input')
 
-const DEFAULT = {
-  backgroundInput: '#8A2BE2FF',
-  backgroundCodeInput: '#282a36',
-}
 
+let config
+let session
 initialize()
+
 backgroundInput.addEventListener('change', setConfig);
 backgroundCodeInput.addEventListener('change', setConfig);
 document.addEventListener('paste', onPaste);
 
 function initialize() {
-  backgroundInput.value = DEFAULT.backgroundInput
-  backgroundCodeInput.value = DEFAULT.backgroundCodeInput
+  session = getCookie(SESSION)
+  if (session) {
+    config = getConfig(session)
+  } else {
+    session = 'default'
+    setCookie(SESSION, session)
+    config = DEFAULT
+  }
 
   setConfig()
 }
 
+function saveConfig(session) {
+  return setCookie(session, JSON.stringify(config))
+}
+
+function getConfig(session) {
+  return JSON.parse(getCookie(session))
+}
+
 function setConfig() {
-  image.style.backgroundColor = backgroundInput.value
-  frame.style.backgroundColor = backgroundCodeInput.value
+  backgroundInput.value = backgroundInput.value || config.backgroundInput
+  backgroundCodeInput.value = backgroundCodeInput.value || config.backgroundCodeInput
+
+  config.backgroundInput = backgroundInput.value
+  config.backgroundCodeInput = backgroundCodeInput.value
+
+  image.style.backgroundColor = config.backgroundInput
+  frame.style.backgroundColor = config.backgroundCodeInput
+
+  saveConfig(session)
 }
 
 function onPaste(event) {
