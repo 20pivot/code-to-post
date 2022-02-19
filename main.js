@@ -1,4 +1,29 @@
+const image = document.getElementById('image')
+const frame = document.getElementById('frame')
+const backgroundInput = document.getElementById('background-input')
+const backgroundCodeInput = document.getElementById('background-code-input')
+
+const DEFAULT = {
+  backgroundInput: '#8A2BE2FF',
+  backgroundCodeInput: '#282a36',
+}
+
+initialize()
+backgroundInput.addEventListener('change', setConfig);
+backgroundCodeInput.addEventListener('change', setConfig);
 document.addEventListener('paste', onPaste);
+
+function initialize() {
+  backgroundInput.value = DEFAULT.backgroundInput
+  backgroundCodeInput.value = DEFAULT.backgroundCodeInput
+
+  setConfig()
+}
+
+function setConfig() {
+  image.style.backgroundColor = backgroundInput.value
+  frame.style.backgroundColor = backgroundCodeInput.value
+}
 
 function onPaste(event) {
   const clipboardItems = event.clipboardData.items;
@@ -19,7 +44,8 @@ function onPaste(event) {
 }
 
 function exportAsJpg() {
-  domtoimage.toJpeg(document.getElementById('image')).then(function (blob) {
+  domtoimage.toJpeg(image).then(function (blob) {
     window.saveAs(blob, 'my-node.png')
   })
 }
+

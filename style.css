@@ -1,14 +1,33 @@
 #image {
-    background-color: blueviolet;
     padding: 50px;
     width: 500px;
+    margin-bottom: 20px;
 }
 
 #frame {
-    background-color: #282a36;
     border-radius: 5px;
 }
 
 #top {
     padding: 10px;
+}
+
+.config-frame {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 74px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    float: left;
+}
+
+label {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    width: 300px;
 }
