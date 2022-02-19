@@ -1,0 +1,14 @@
+#image {
+    background-color: blueviolet;
+    padding: 50px;
+    width: 500px;
+}
+
+#frame {
+    background-color: #282a36;
+    border-radius: 5px;
+}
+
+#top {
+    padding: 10px;
+}
