@@ -81,3 +81,15 @@ select {
     background-color: #1c7a7a;
     border-color: #217575;
 }
+
+.info-frame {
+    padding: 20px;
+}
+
+.info {
+    margin: 20px;
+    background-color: #96d7ce;
+    border-radius: 5px;
+    padding: 20px;
+
+}

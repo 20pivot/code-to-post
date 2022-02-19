@@ -16,6 +16,8 @@ const exportButton = document.getElementById('export-button')
 const sessionSelector = document.getElementById('session-selector')
 const sessionNominator = document.getElementById('session-nominator')
 const addSessionButton = document.getElementById('add-session')
+const infoInside = document.getElementById('info-inside')
+const infoOutside = document.getElementById('info-outside')
 
 
 let config
@@ -128,6 +130,8 @@ function onPaste(event) {
   const imageUrl = window.URL.createObjectURL(blob);
   document.getElementById('code').src = imageUrl;
 
+  infoInside.hidden = true
+  infoOutside.hidden = false
   if(config.autoExportCheck) {
     setTimeout(() => exportAsJpg(), 500)
   }
