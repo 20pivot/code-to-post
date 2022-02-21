@@ -18,6 +18,7 @@ body {
 
 #frame {
     border-radius: 5px;
+    box-shadow: 0 20px 68px rgb(0 0 0 / 55%);
 }
 
 #top {
@@ -27,10 +28,11 @@ body {
 .config-frame {
     display: flex;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 input {
-    width: 74px;
+    width: 70%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid black;
@@ -38,11 +40,16 @@ input {
     margin-right: 20px;
 }
 
+input[type=checkbox] {
+    width: 10px;
+    margin-left: -10px;
+}
+
 label {
     float: left;
     height: 36px;
     line-height: 36px;
-    width: 300px;
+    width: 30%;
 }
 
 select {
@@ -54,32 +61,44 @@ select {
     margin-right: 20px;
 }
 
-#export-button {
+button {
+    margin-right: 20px;
     float: right;
     padding: 10px 20px;
     border-radius: 5px;
-    border: 1px solid #198754;
-    background-color: #198754;
     color: #fff;
     cursor: pointer;
+}
+
+#export-button {
+    border: 1px solid #198754;
+    background-color: #198754;
 }
 #export-button:hover {
     background-color: #157347;
     border-color: #146c43;
 }
 
+#to-default {
+    border: 1px solid #871919;
+    background-color: #871919;
+}
+#to-default:hover {
+    background-color: #731515;
+    border-color: #6c1414;
+}
+
 #add-session {
-    float: right;
-    padding: 10px 20px;
-    border-radius: 5px;
     border: 1px solid #198787;
     background-color: #198787;
-    color: #fff;
-    cursor: pointer;
 }
 #add-session:hover {
     background-color: #1c7a7a;
     border-color: #217575;
+}
+
+#session-nominator {
+    width: 167px;
 }
 
 .info-frame {

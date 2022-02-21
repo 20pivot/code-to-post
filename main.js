@@ -1,5 +1,5 @@
 const DEFAULT = {
-  backgroundInput: '#8A2BE2FF',
+  backgroundInput: 'linear-gradient(135deg, rgba(209,31,182,1) 0%, rgba(253,97,45,1) 100%)',
   backgroundCodeInput: '#282a36',
   autoExportCheck: true,
 }
@@ -15,6 +15,7 @@ const autoExportCheck = document.getElementById('auto-export-check')
 const exportButton = document.getElementById('export-button')
 const sessionSelector = document.getElementById('session-selector')
 const sessionNominator = document.getElementById('session-nominator')
+const toDefaultButton = document.getElementById('to-default')
 const addSessionButton = document.getElementById('add-session')
 const infoInside = document.getElementById('info-inside')
 const infoOutside = document.getElementById('info-outside')
@@ -27,6 +28,7 @@ initialize()
 
 sessionSelector.addEventListener('change', changeSession);
 sessionNominator.addEventListener('change', changeSessionName);
+toDefaultButton.addEventListener('click', toDefault);
 addSessionButton.addEventListener('click', addSession);
 backgroundInput.addEventListener('change', setConfig);
 backgroundCodeInput.addEventListener('change', setConfig);
@@ -77,6 +79,11 @@ function changeSessionName(event) {
   sessionNominator.value = ''
 }
 
+function toDefault() {
+  config = DEFAULT
+  setConfig(true)
+}
+
 function addSession() {
   const sessionName = window.prompt('Insert new session name')
   if(!sessionName) return
@@ -109,8 +116,8 @@ function setConfig(isInitialize) {
   config.backgroundCodeInput = backgroundCodeInput.value
   config.autoExportCheck = autoExportCheck.checked
 
-  image.style.backgroundColor = config.backgroundInput
-  frame.style.backgroundColor = config.backgroundCodeInput
+  image.style.background = config.backgroundInput
+  frame.style.background = config.backgroundCodeInput
 
   saveConfig()
 }
