@@ -12,7 +12,7 @@ body {
 
 #image {
     padding: 50px;
-    width: 500px;
+    min-width: 500px;
     margin-bottom: 20px;
 }
 
